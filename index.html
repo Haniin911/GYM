@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كابتن سعيد | استمارة عميل جديد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0A0A0A;
+    --paper-card:#171414;
+    --ink:#F2EDE8;
+    --ink-soft:#B7AFA8;
+    --oxblood:#E1263A;
+    --mustard:#8C0F1E;
+    --line:#332B2B;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(225,38,58,0.10), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(225,38,58,0.06), transparent 45%);
+    font-family:'Tajawal', sans-serif;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    padding:28px 14px 60px;
+  }
+  .sheet{
+    max-width:520px;
+    width:100%;
+  }
+  .stamp{
+    width:150px;
+    height:150px;
+    margin:0 auto 8px;
+    border:3px solid var(--oxblood);
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(-4deg);
+    position:relative;
+    background:var(--paper-card);
+  }
+  .stamp::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px dashed var(--oxblood);
+    border-radius:50%;
+  }
+  .stamp .top-txt{
+    font-family:'Cairo',sans-serif;
+    font-weight:800;
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--oxblood);
+  }
+  .stamp .dumbbell{ font-size:30px; margin:4px 0; }
+  .stamp .bottom-txt{
+    font-family:'Cairo',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    color:var(--ink-soft);
+    letter-spacing:1px;
+  }
+  h1{
+    font-family:'Cairo',sans-serif;
+    font-weight:900;
+    font-size:30px;
+    text-align:center;
+    margin:6px 0 4px;
+    letter-spacing:-0.5px;
+  }
+  .sub{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    margin-bottom:26px;
+    line-height:1.7;
+  }
+  form{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 22px 30px;
+    box-shadow:0 3px 0 #000;
+  }
+  .sec-title{
+    font-family:'Cairo',sans-serif;
+    font-weight:800;
+    font-size:15px;
+    color:var(--oxblood);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:26px 0 16px;
+  }
+  .sec-title:first-of-type{ margin-top:0; }
+  .sec-num{
+    width:24px; height:24px;
+    border-radius:50%;
+    background:var(--oxblood);
+    color:var(--paper-card);
+    font-size:12px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .sec-title::after{
+    content:"";
+    flex:1;
+    border-bottom:1px dashed var(--line);
+  }
+  .row{ margin-bottom:16px; }
+  .row.two{
+    display:flex;
+    gap:12px;
+  }
+  .row.two > div{ flex:1; }
+  label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  input[type=text], input[type=number], input[type=tel]{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:#FFFFFF;
+    font-family:'Tajawal',sans-serif;
+    font-size:15px;
+    color:#1A1A1A;
+  }
+  select{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:#0F0D0D;
+    font-family:'Tajawal',sans-serif;
+    font-size:15px;
+    color:var(--ink);
+    color-scheme:dark;
+  }
+  input::placeholder{ color:#8A8A8A; }
+  input:focus, select:focus{
+    outline:2px solid var(--oxblood);
+    outline-offset:1px;
+  }
+  .check-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+  .check-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    background:#0F0D0D;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:9px 10px;
+    cursor:pointer;
+  }
+  .check-item input{ width:16px; height:16px; accent-color:var(--oxblood); cursor:pointer; }
+  .hint{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+  button{
+    width:100%;
+    margin-top:28px;
+    padding:15px;
+    border:none;
+    border-radius:5px;
+    background:var(--oxblood);
+    color:#FFFFFF;
+    font-family:'Cairo',sans-serif;
+    font-weight:800;
+    font-size:16px;
+    letter-spacing:0.3px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  button:active{ transform:translateY(1px); }
+  .err{
+    color:var(--oxblood);
+    font-size:12.5px;
+    margin-top:6px;
+    display:none;
+    font-weight:700;
+  }
+  .footer-note{
+    text-align:center;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:16px;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="stamp">
+    <div class="top-txt">CAPTAIN SAEED GYM</div>
+    <div class="dumbbell">🏋️</div>
+    <div class="bottom-txt">عميل جديد</div>
+  </div>
+  <h1>ابدأ رحلتك معانا</h1>
+  <p class="sub">املا بياناتك، وهتتبعت مباشرة لكابتن سعيد على واتساب عشان يبدأ يتكلم معاك.</p>
+
+  <form id="gymForm">
+    <div class="sec-title"><span class="sec-num">1</span> البيانات الأساسية</div>
+
+    <div class="row">
+      <label for="name">الاسم بالكامل</label>
+      <input type="text" id="name" required>
+    </div>
+
+    <div class="row">
+      <label for="phone">رقم الهاتف (واتساب)</label>
+      <input type="tel" id="phone" placeholder="01xxxxxxxxx" required>
+    </div>
+
+    <div class="row two">
+      <div>
+        <label for="age">السن</label>
+        <input type="number" id="age" min="5" max="100" required>
+      </div>
+      <div>
+        <label for="weight">الوزن (كجم)</label>
+        <input type="number" id="weight" min="20" max="300" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="height">الطول (سم)</label>
+      <input type="number" id="height" min="80" max="230" required>
+    </div>
+
+    <div class="row">
+      <label for="experience">هل اتمرنت في الجيم قبل كده؟</label>
+      <select id="experience" required>
+        <option value="" disabled selected>اختر من القائمة</option>
+        <option value="أيوه، عندي خبرة">أيوه، عندي خبرة</option>
+        <option value="أيوه بس بسيطة / متقطعة">أيوه بس بسيطة / متقطعة</option>
+        <option value="لأ، دي أول مرة">لأ، دي أول مرة</option>
+      </select>
+    </div>
+
+    <div class="sec-title"><span class="sec-num">2</span> الحالة الصحية</div>
+
+    <div class="row">
+      <label for="injury">هل عندك إصابة سابقة أو حالية؟</label>
+      <select id="injury" required>
+        <option value="" disabled selected>اختر من القائمة</option>
+        <option value="لا توجد إصابات">لا توجد إصابات</option>
+        <option value="إصابة في الركبة">إصابة في الركبة</option>
+        <option value="إصابة في الكتف">إصابة في الكتف</option>
+        <option value="إصابة في أسفل الظهر / الفقرات">إصابة في أسفل الظهر / الفقرات</option>
+        <option value="إصابة في الكاحل">إصابة في الكاحل</option>
+        <option value="إصابة في الرسغ / اليد">إصابة في الرسغ / اليد</option>
+        <option value="إصابة أخرى">إصابة أخرى</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label>هل عندك أي أمراض؟ (اختر كل ما ينطبق)</label>
+      <div class="check-grid" id="diseaseGrid">
+        <label class="check-item"><input type="checkbox" name="disease" value="لا يوجد" data-none="true"> لا يوجد</label>
+        <label class="check-item"><input type="checkbox" name="disease" value="السكر"> السكر</label>
+        <label class="check-item"><input type="checkbox" name="disease" value="ضغط الدم"> ضغط الدم</label>
+        <label class="check-item"><input type="checkbox" name="disease" value="القلب"> القلب</label>
+        <label class="check-item"><input type="checkbox" name="disease" value="الربو / الجهاز التنفسي"> الربو / الجهاز التنفسي</label>
+        <label class="check-item"><input type="checkbox" name="disease" value="الغدة الدرقية"> الغدة الدرقية</label>
+        <label class="check-item"><input type="checkbox" name="disease" value="مرض آخر"> مرض آخر</label>
+      </div>
+      <div class="err" id="diseaseErr">من فضلك اختر حالة واحدة على الأقل (أو "لا يوجد")</div>
+    </div>
+
+    <div class="sec-title"><span class="sec-num">3</span> الهدف</div>
+
+    <div class="row">
+      <label for="goal">إيه هدفك من التمرين؟</label>
+      <select id="goal" required>
+        <option value="" disabled selected>اختر من القائمة</option>
+        <option value="تنزيل وزن">تنزيل وزن</option>
+        <option value="تضخيم عضلي (بناء عضل)">تضخيم عضلي (بناء عضل)</option>
+        <option value="لياقة بدنية عامة">لياقة بدنية عامة</option>
+        <option value="تأهيل بعد إصابة">تأهيل بعد إصابة</option>
+        <option value="تحسين لياقة رياضية">تحسين لياقة رياضية</option>
+      </select>
+    </div>
+
+    <button type="submit">إرسال البيانات لكابتن سعيد 💬</button>
+    <p class="footer-note">هيفتحلك واتساب وبياناتك جاهزة، تدوس إرسال وخلاص</p>
+  </form>
+</div>
+
+<script>
+  const CAPTAIN_NUMBER = "201014674147"; // بدون + أو أصفار زيادة
+
+  const diseaseGrid = document.getElementById('diseaseGrid');
+  const noneBox = diseaseGrid.querySelector('[data-none="true"]');
+  const otherBoxes = [...diseaseGrid.querySelectorAll('input[name="disease"]')].filter(b => b !== noneBox);
+
+  noneBox.addEventListener('change', () => {
+    if (noneBox.checked) otherBoxes.forEach(b => b.checked = false);
+  });
+  otherBoxes.forEach(b => {
+    b.addEventListener('change', () => {
+      if (b.checked) noneBox.checked = false;
+    });
+  });
+
+  document.getElementById('gymForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const checked = [...diseaseGrid.querySelectorAll('input[name="disease"]:checked')].map(b => b.value);
+    const diseaseErr = document.getElementById('diseaseErr');
+    if (checked.length === 0){
+      diseaseErr.style.display = 'block';
+      diseaseGrid.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    diseaseErr.style.display = 'none';
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const weight = document.getElementById('weight').value.trim();
+    const height = document.getElementById('height').value.trim();
+    const experience = document.getElementById('experience').value;
+    const injury = document.getElementById('injury').value;
+    const goal = document.getElementById('goal').value;
+    const diseases = checked.join('، ');
+
+    const msg =
+`مرحبًا كابتن سعيد 👋
+عميل جديد عايز يبدأ معاك:
+
+📝 الاسم: ${name}
+📱 الرقم: ${phone}
+🎂 السن: ${age}
+⚖️ الوزن: ${weight} كجم
+📏 الطول: ${height} سم
+🏋️ اتمرن قبل كده: ${experience}
+🩹 الإصابات: ${injury}
+🩺 الأمراض: ${diseases}
+🎯 الهدف: ${goal}`;
+
+    const url = `https://wa.me/${CAPTAIN_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  });
+</script>
+</body>
+</html>
